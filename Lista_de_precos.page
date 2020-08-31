@@ -1,0 +1,25 @@
+<apex:page standardController="Opportunity" extensions="ProdutoDaOportunidadeController">
+    <style>
+        .notaLabel {padding-right: 15px;}
+        .listaButton {margin-left: 10px;}
+    </style>
+    <apex:sectionHeader title="" subtitle="Cadastro de itens" />
+    <apex:pageMessages />
+    <apex:form id="form">
+    <apex:commandButton action="{!save}" value="Salvar" styleClass="listaButton" onComplete="parent.location.href = '/{!Opportunity.Id}'" />
+    <p />
+        <apex:pageBlock title="Preços">
+            <apex:pageBlockTable value="{!produtosDaTabelaDePrecos}" var="pr">
+                <apex:column value="{!pr.Produto__c}" />
+                <apex:column value="{!pr.Preco_CIF__c}" />
+                <apex:column value="{!pr.Preco_FOB__c}" />
+                <apex:column headerValue="Quantidade">
+                    <apex:inputField value="{!pr.Quantidade__c}" />
+                </apex:column>
+                <apex:column headerValue="Desconto em Reais">
+                    <apex:inputField value="{!pr.Desconto_em_R__c}" />
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
